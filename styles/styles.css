@@ -862,4 +862,43 @@ header.scrolled .main-logo {
     .scroll-to-top {
         bottom: 90px;
     }
+    header {
+        padding: 0 4%; /* Un poco menos de margen a los lados */
+    }
+    
+    .main-logo {
+        width: 130px; /* Hacemos el logo un poco más angosto para que quepa el botón */
+        height: 60px;
+        margin-top: 5px;
+        margin-bottom: -10px;
+    }
+
+    header.scrolled .main-logo {
+        height: 50px;
+        width: 110px;
+        margin-top: 0;
+        margin-bottom: -5px;
+    }
+
+    /* --- 2. Corrección de la sección de Servicios (Muestrario La Michoacana) --- */
+    .service-row, 
+    .service-row.reverse {
+        flex-direction: column; /* Apila la imagen arriba y el texto abajo */
+        gap: 1.5rem;
+    }
+
+    .service-image-placeholder {
+        width: 100%; /* Toma todo el ancho de la pantalla */
+        min-height: 280px; /* Le da una altura fija para que la caja negra se vea bien proporcionada mientras subes las fotos */
+    }
+
+    .service-content {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .service-content h3 {
+        font-size: 1.5rem; /* Ajusta el tamaño del título para que no se desborde */
+    }
 }
