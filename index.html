@@ -3,47 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Print | Manufactura Aditiva Ágil B2B</title>
     
-    <!-- Enlace a tu hoja de estilos separada -->
+    <!-- ==========================================
+         SEO BÁSICO
+         ========================================== -->
+    <title>Happy Print | Manufactura Rápida y Personalizada</title>
+    <meta name="description" content="Taller local especializado en impresión 3D y manufactura rápida. Creamos productos personalizados, merchandising y utilitarios para negocios en la Riviera Maya.">
+    <meta name="author" content="Happy Print">
+    <meta name="keywords" content="impresión 3D, manufactura aditiva, merchandising, llaveros resina UV, Riviera Maya, Puerto Morelos, regalos corporativos, impresión rápida">
+    
+    <!-- ==========================================
+         OPEN GRAPH (Para Facebook, LinkedIn, WhatsApp)
+         ========================================== -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.tu-dominio.com/"> <!-- Cambia esto por tu dominio final -->
+    <meta property="og:title" content="Happy Print | Impresión 3D para Negocios Locales">
+    <meta property="og:description" content="Taller local en la Riviera Maya. Llevamos tu idea del plano 2D al 3D con entregas desde 48 horas y acabado cristalino en resina UV.">
+    <meta property="og:image" content="https://www.tu-dominio.com/images/social-preview.jpg"> <!-- Enlace absoluto a tu imagen de portada -->
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- ==========================================
+         TWITTER CARDS (Para X / Twitter)
+         ========================================== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Happy Print | Manufactura Rápida y Personalizada">
+    <meta name="twitter:description" content="Impresión 3D de alta velocidad para marcas y comercios en la Riviera Maya. Entregas rápidas y calidad premium.">
+    <meta name="twitter:image" content="https://www.tu-dominio.com/images/social-preview.jpg">
+
+    <!-- ==========================================
+         FAVICON (El ícono de la pestaña del navegador)
+         ========================================== -->
+    <link rel="icon" type="image/svg+xml" href="./images/happy.svg">
+    <link rel="alternate icon" href="./images/favicon.ico"> <!-- Respaldo para navegadores antiguos -->
+
+    <!-- ==========================================
+         ESTILOS Y SCRIPTS
+         ========================================== -->
+    <!-- Enlace a tu hoja de estilos principal -->
     <link rel="stylesheet" href="./styles/styles.css">
+
+    <!-- Mapa de importación para Three.js -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/"
+            }
+        }
+    </script>
 </head>
 <body>
 
     <header>
-        <div class="logo">Happy<span>Print</span></div>
+        <!-- Enlace del logo que te regresa al inicio -->
+        <a href="#" class="logo-link">
+            <img src="./images/logo.svg" alt="Happy Print" class="main-logo">
+        </a>
         <a href="#contacto" class="btn-primary btn-sm">Cotizar Proyecto</a>
     </header>
 
     <main>
         <section class="hero">
             <div class="hero-content">
-                <div class="hero-tag">Manufactura Ágil y Exclusiva</div>
-                <h1>El estándar premium para tu marca corporativa.</h1>
-                <p>Especialistas en merchandising de alta calidad y tirajes rápidos. Desde prototipos hasta 100 piezas premium con encapsulado UV entregadas en 48 horas. Tu socio local en manufactura aditiva de alta velocidad.</p>
+                <div class="hero-tag">Manufactura Rápida y Personalizada</div>
+                <h1>Soluciones únicas hechas a la medida de tu negocio.</h1>
+                <p>Creamos productos de alta calidad con impresiones rápidas. Llevamos tu idea del plano 2D al 3D en lotes de hasta 100 piezas con encapsulado UV, entregadas en 48 horas*. Tu socio local en impresión 3D de alta velocidad.</p>
+                
                 <a href="#servicios" class="btn-primary">Ver acabados y servicios</a>
+                
+                <!-- Nota aclaratoria del asterisco -->
+                <small class="hero-disclaimer">* El tiempo de entrega puede variar según el volumen y la complejidad del diseño.</small>
             </div>
             
-            <!-- Aquí se montará tu escena de Three.js desde main.js -->
-            <div id="hero-canvas-container"></div>
+            <!-- Contenedor del modelo 3D -->
+            <div id="hero-canvas-container">
+                <div id="drag-indicator" class="drag-indicator">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.3"/>
+                    </svg>
+                    Da Click y Arrastra para Rotar
+                </div>
+            </div>
+
+            <!-- NUEVO: Tarjeta de Caso de Estudio (2D a 3D) -->
+            <div class="transformation-card">
+                <div class="transform-header">Ingeniería de Producto</div>
+                <div class="transform-body">
+                    <!-- Reemplaza el src con la ruta del logo de tu cliente -->
+                    <div class="transform-item">
+                        <span class="transform-label">Logo Original</span>
+                        <div class="client-logo-box">
+                            <!-- Aquí borramos el SVG y pusimos la imagen real -->
+                            <img src="./images/aguanile.jpg" alt="Logotipo original del cliente">
+                        </div>
+                    </div>
+
+                    <!-- Flecha de transición -->
+                    <svg class="transform-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+
+                    <div class="transform-item">
+                        <span class="transform-label">Modelo CAD</span>
+                        <div class="cad-badge">Extrusión .GLB</div>
+                    </div>
+                </div>
+            </div>
         </section>
         <!-- Cinta de Confianza -->
         <section class="trust-bar">
-            <p>Manufactura ágil para el sector corporativo y hotelero de Quintana Roo</p>
+            <!-- AQUÍ VA EL LOGO: Funciona como marca de agua de fondo -->
+            <img src="./images/happy.svg" alt="Happy Print" class="trust-watermark">
+            
+            <p>Manufactura aditiva para marcas, turismo y negocios locales en expansión</p>
             <div class="trust-logos">
-                <!-- Aquí irán los logos de tus clientes. Usamos texto por ahora -->
-                <div class="logo-placeholder">GRUPO HOTELERO</div>
-                <div class="logo-placeholder">INMOBILIARIA B2B</div>
-                <div class="logo-placeholder">AGENCIA CORPORATIVA</div>
+                <div class="logo-placeholder">CENTROS DE BUCEO</div>
+                <div class="logo-placeholder">GASTRONOMÍA LOCAL</div>
+                <div class="logo-placeholder">SECTOR INMOBILIARIO</div>
+                <div class="logo-placeholder">EVENTOS Y ACADEMIAS</div>
             </div>
         </section>
 
         <!-- Músculo Tecnológico -->
         <section id="tecnologia" class="tech-muscle">
             <div class="section-header">
-                <div class="hero-tag">Velocidad Industrial</div>
-                <h2>Cinemática Delta de Alta Precisión</h2>
-                <p>No dependemos de cadenas de suministro lentas. Nuestra granja local garantiza merchandising y piezas técnicas listas en una fracción del tiempo tradicional.</p>
+                <div class="hero-tag">Taller Local Especializado</div>
+                <h2>Impresión Delta de Alta Precisión</h2>
+                <p>No dependemos de intermediarios ni largos tiempos de envío. Al fabricar de manera local, garantizamos que tus productos personalizados estén listos en una fracción del tiempo tradicional, con acabados impecables y sin complicaciones.</p>
             </div>
             
             <div class="tech-grid">
@@ -54,8 +142,8 @@
                             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                         </svg>
                     </div>
-                    <h3>Entregas en 48 Horas</h3>
-                    <p>Capacidad probada para sacar tirajes de 100 llaveros estándar premium o piezas corporativas en uno o dos días, sin sacrificar calidad.</p>
+                    <h3>Entregas desde 48 Horas</h3>
+                    <p>Fabricamos lotes de hasta 100 piezas personalizadas en un par de días*. Ideal para resurtir el inventario de tu local o preparar un evento de último minuto.</p>
                 </div>
                 
                 <div class="tech-card hidden-scroll">
@@ -65,8 +153,8 @@
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                         </svg>
                     </div>
-                    <h3>Acabado UV Premium</h3>
-                    <p>Adiós a la textura de impresión tradicional. Aplicamos un encapsulado de resina UV que otorga un brillo cristalino y resistencia superior.</p>
+                    <h3>Acabado en Resina UV</h3>
+                    <p>Olvídate de la textura rayada de la impresión 3D común. Sellamos cada pieza con resina que le aporta un brillo de cristal y la protege del desgaste diario.</p>
                 </div>
                 
                 <div class="tech-card hidden-scroll">
@@ -77,42 +165,42 @@
                             <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
                         </svg>
                     </div>
-                    <h3>Materiales Técnicos</h3>
-                    <p>Utilizamos polímeros de grado industrial para asegurar que cada producto soporte el uso diario de tus clientes o huéspedes.</p>
+                    <h3>Materiales de Alta Resistencia</h3>
+                    <p>Utilizamos plásticos duraderos que soportan el clima local y el trato rudo. Perfectos para las llaves de un alquiler vacacional, el mostrador de un café o el equipo de tus clientes.</p>
                 </div>
             </div>
         </section>
         <!-- Servicios / Líneas de Negocio -->
         <section id="servicios" class="services-section">
             <div class="section-header hidden-scroll">
-                <div class="hero-tag">Líneas de Negocio</div>
-                <h2>Soluciones de Manufactura</h2>
-                <p>Adaptamos nuestra capacidad de impresión a las necesidades operativas y de marketing de tu empresa.</p>
+                <div class="hero-tag">Productos Personalizados</div>
+                <h2>Destaca de la competencia</h2>
+                <p>Un regalo a la medida no solo premia la lealtad de tus clientes, sino que convierte cada pieza en un embajador único de tu negocio.</p>
             </div>
 
-            <!-- Servicio 1: Merchandising -->
+            <!-- Servicio 1: Artículos Divertidos y Merchandising -->
             <div class="service-row hidden-scroll">
                 <div class="service-image-placeholder">
-                    <!-- SVG de Imagen (Placeholder para tu futura foto macro del llavero con resina) -->
+                    <!-- SVG Placeholder -->
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                         <circle cx="8.5" cy="8.5" r="1.5"></circle>
                         <polyline points="21 15 16 10 5 21"></polyline>
                     </svg>
-                    <div class="image-overlay">Fotografía Macro: Llavero Estándar con Resina UV</div>
+                    <div class="image-overlay">Fotografía: Muestrario personalizado para La Michoacana</div>
                 </div>
                 <div class="service-content">
-                    <h3>Merchandising Corporativo Premium</h3>
-                    <p>Eleva la percepción de tu marca. Fabricamos llaveros estándar y artículos promocionales con polímeros de alta resistencia. Nuestro diferenciador es el <strong>encapsulado final con resina UV</strong>, que otorga un acabado brillante, liso y de nivel cristal que los productos 3D tradicionales no pueden igualar.</p>
+                    <h3>Regalos de Lealtad Inolvidables</h3>
+                    <p>Haz que la gente quiera llevar tu marca a todas partes. Diseñamos piezas creativas con las formas exactas de tus productos estrella: desde clickers interactivos en forma de paleta payaso, un elote o un pan dulce para tu cafetería, hasta llaveros estándar con el logo de tu local. Nuestro <strong>encapsulado con resina UV</strong> les da un acabado brillante y liso que resalta a la vista.</p>
                     <ul class="service-list">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--primary-uv)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Tirajes ágiles (hasta 100 piezas en 48h)</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--primary-uv)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Diseño corporativo a medida</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--primary-uv)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Brillo y resistencia superior</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--border-heavy)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Diseños a la medida de tus productos</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--border-heavy)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Acabado cristalino superior con resina</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--border-heavy)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Tirajes rápidos para resurtir tu local</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Servicio 2: Prototipado y Piezas -->
+            <!-- Servicio 2: Utilitarios -->
             <div class="service-row reverse hidden-scroll">
                 <div class="service-image-placeholder">
                     <!-- SVG Placeholder -->
@@ -121,15 +209,15 @@
                         <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
                         <line x1="12" y1="22.08" x2="12" y2="12"></line>
                     </svg>
-                    <div class="image-overlay">Fotografía: Pieza Mecánica o Prototipo</div>
+                    <div class="image-overlay">Fotografía: Abrelatas y utilitarios con marca local</div>
                 </div>
                 <div class="service-content">
-                    <h3>Prototipado Funcional y Refacciones</h3>
-                    <p>Desarrollo de piezas de reemplazo o validación de diseño para el sector hotelero e industrial. Nuestra granja opera con tecnología de cinemática rápida, permitiendo iterar modelos geométricos complejos con tolerancias precisas en cuestión de horas, no semanas.</p>
+                    <h3>Herramientas Útiles y Uso Diario</h3>
+                    <p>No todo tiene que ser un adorno. Fabricamos herramientas prácticas que tus clientes usarán en su día a día, como abrelatas funcionales, destapadores o accesorios para el hogar impresos con el logotipo de tu marca. Utilizamos polímeros mate y materiales de alta resistencia (como PETG) para asegurar que cada herramienta soporte el uso continuo.</p>
                     <ul class="service-list">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--primary-uv)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Materiales técnicos: PLA Mate y PETG</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--primary-uv)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Validación geométrica rápida</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--primary-uv)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Reducción de costos de importación</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--border-heavy)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Abrelatas, destapadores y accesorios útiles</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--border-heavy)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Plásticos de alta resistencia mecánica</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--border-heavy)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Tu marca siempre en las manos del cliente</li>
                     </ul>
                 </div>
             </div>
@@ -140,19 +228,32 @@
     <!-- Footer y CTA B2B -->
     <footer id="contacto" class="footer-section">
         <div class="footer-grid">
+            <!-- Bloque 1: Identidad alineada al taller local -->
             <div class="footer-brand">
-                <div class="logo">Happy<span>Print</span></div>
-                <p>Manufactura aditiva ágil para la industria hotelera y corporativa. Velocidad y precisión en cada pieza.</p>
+                <div class="logo">
+                    <img src="./images/happy.svg" alt="Happy Print" style="height: 35px; width: auto;">
+                </div>
+                <p>Tu taller local especializado en impresión 3D de alta velocidad y piezas personalizadas en la Riviera Maya.</p>
             </div>
+
+            <!-- Bloque 2: Enlaces Rápidos de Navegación -->
             <div class="footer-contact">
-                <h4>Contacto de Ventas</h4>
-                <p>Riviera Maya, Quintana Roo</p>
-                <!-- Modifica este enlace con tu correo -->
+                <h4>Secciones</h4>
+                <p><a href="#tecnologia" class="footer-link" style="border: none; font-weight: 500;">Taller y Capacidades</a></p>
+                <p><a href="#servicios" class="footer-link" style="border: none; font-weight: 500;">Productos y Soluciones</a></p>
+            </div>
+
+            <!-- Bloque 3: Contacto Directo y Ubicación -->
+            <div class="footer-contact">
+                <h4>Contacto Directo</h4>
+                <p>Puerto Morelos & Riviera Maya, Q. Roo</p>
+                <p>Atención directa por WhatsApp o correo</p>
                 <a href="mailto:cotizaciones@happyprint.com" class="footer-link">cotizaciones@happyprint.com</a>
             </div>
         </div>
+        
         <div class="footer-bottom">
-            <p>&copy; 2026 Happy Print. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Happy Print. Todos los derechos reservados. Hecho localmente.</p>
         </div>
     </footer>
 

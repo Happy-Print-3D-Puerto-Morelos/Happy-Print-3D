@@ -16,4 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
     initUIElements(); // <-- 2. Lo ejecutas
 
     console.log("Happy Print - Módulos cargados correctamente.");
+    // --- Efecto Navbar al hacer Scroll ---
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    // Si bajamos más de 50 píxeles, activamos la clase .scrolled
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
 });
