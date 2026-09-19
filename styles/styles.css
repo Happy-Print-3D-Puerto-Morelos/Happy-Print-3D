@@ -1,13 +1,32 @@
 /* ==========================================================================
    1. VARIABLES GLOBALES Y RESET
    ========================================================================== */
+/* ==========================================================================
+   1. VARIABLES GLOBALES Y RESET
+   ========================================================================== */
 :root {
+    /* --- Colores Base (Neo-Brutalismo) --- */
     --bg-base: #F3F4F6;
     --surface: #FFFFFF;
     --text-main: #09090B;
     --text-muted: #52525B;
     --border-heavy: #09090B;
     --accent: #F97316;
+
+    /* --- Paleta Neón (Efecto Tornasol) --- */
+    --neon-blue: #0044FF;
+    --neon-purple: #B620E0;
+    --neon-orange: #FF7B00;
+    
+    /* Degradado cíclico para las animaciones */
+    --neon-gradient: linear-gradient(
+        90deg, 
+        var(--neon-blue) 0%, 
+        var(--neon-purple) 25%, 
+        var(--neon-orange) 50%, 
+        var(--neon-purple) 75%, 
+        var(--neon-blue) 100%
+    );
 }
 
 * {
@@ -40,7 +59,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 5%;
+    /* 1. Quitamos el padding vertical para adelgazar la barra por completo */
+    padding: 0 5%; 
+    min-height: 70px; /* Altura fija y delgada */
     background-color: var(--surface);
     border-bottom: 3px solid var(--border-heavy);
     z-index: 1000;
@@ -48,38 +69,69 @@ header {
 }
 
 header.scrolled {
+    min-height: 55px; /* Aún más delgada al scrollear */
     background-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(1px);
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    padding: 0.60rem 5%;
     border-bottom: 3px solid rgba(0, 0, 0, 0.15);
 }
 
+
+/* --- CLASE MAESTRA: El motor del efecto Tornasol y el Molde del Logo --- */
+.logo-animado {
+    /* Estado NORMAL: Color oscuro estático (tu color base) */
+    background: var(--text-main);
+    
+    /* Usamos tu SVG como "molde" para recortar el fondo */
+    -webkit-mask-image: url('../images/happy.svg'); 
+    mask-image: url('../images/happy.svg');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center left; 
+    mask-position: center left;
+    
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+.logo-animado:hover {
+    background: var(--neon-gradient);
+    background-size: 200% auto;
+    animation: resplandorTornasol 3s linear infinite;
+}
+
+/* Animación infinita del fondo de colores */
+@keyframes resplandorTornasol {
+    0% { background-position: 0% center; }
+    100% { background-position: -200% center; }
+}
 .logo-link {
     display: flex;
     align-items: center;
     text-decoration: none;
 }
-
 .main-logo {
-    height: 50px;
-    width: auto;
+    height: 150px; /* El logo se mantiene gigante */
+    width: 220px; 
     display: block;
-    transition: height 0.3s ease;
+    
+    /* 2. EL TRUCO: Lo separamos del techo y le damos margen negativo abajo.
+       Esto hace que la barra ignore el tamaño real del logo y permita que "cuelgue" por fuera. */
+    margin-top: -30px; 
+    margin-bottom: -25px; 
+    
+    transition: transform 0.2s ease, height 0.3s ease, margin-bottom 0.3s ease, margin-top 0.3s ease;
 }
 
 header.scrolled .main-logo {
-    height: 45px;
+    height: 65px; 
+    margin-top: 5px;
+    margin-bottom: -5px; /* Cuelga un poco menos */
 }
 
-.main-logo:hover {
+.main-logo:hover, .footer-logo:hover {
     transform: scale(1.02);
 }
-
-.logo span {
-    color: var(--text-main);
-}
-
 /* ==========================================================================
    4. SISTEMA DE BOTONES
    ========================================================================== */
@@ -145,6 +197,33 @@ header.scrolled .main-logo {
     margin-bottom: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hero-tag:hover {
+    /* Degradado holográfico (Cian, Morado, Rosa, Amarillo y vuelve a Cian) */
+    background: linear-gradient(
+        110deg, 
+        #9DF2F8 0%, 
+        #D8A7F4 25%, 
+        #F7A8D8 50%, 
+        #F5F7A8 75%, 
+        #9DF2F8 100%
+    );
+    /* Hacemos que el fondo sea el doble de ancho para poder desplazarlo */
+    background-size: 200% auto; 
+    color: var(--text-main);
+    
+    /* El motor que mueve el color de izquierda a derecha sin parar */
+    animation: resplandorTornasol 2s linear infinite;
+    
+    /* Efecto neo-brutalista de elevación */
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px 0px var(--border-heavy);
+    cursor: pointer;
+}
+@keyframes resplandorTornasol {
+    0% { background-position: 0% center; }
+    100% { background-position: -200% center; }
 }
 
 .hero h1 {
@@ -333,19 +412,30 @@ header.scrolled .main-logo {
     z-index: 0;
 }
 
-.logo-placeholder {
-    font-weight: 800;
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    opacity: 0.6;
-    transition: all 0.3s ease;
-    cursor: default;
+.trust-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 500%; 
+    max-height: 5000px;
+    width: 600px; 
+    
+    -webkit-mask-position: center; 
+    mask-position: center;
+    
+    opacity: 0.15; /* Sutil en estado normal */
+    pointer-events: none; /* No estorba a los clics del usuario */
+    z-index: 0;
+    transition: opacity 0.4s ease;
 }
 
-.logo-placeholder:hover {
-    opacity: 1;
-    color: var(--text-main);
+/* Se enciende el tornasol al pasar el mouse por la sección entera de la cinta */
+.trust-bar:hover .trust-watermark {
+    background: var(--neon-gradient);
+    background-size: 200% auto;
+    animation: resplandorTornasol 3s linear infinite;
+    opacity: 0.35; /* Brilla un poco más para hacerse notar */
 }
 
 /* ==========================================================================
@@ -506,6 +596,56 @@ header.scrolled .main-logo {
     color: var(--text-muted);
     opacity: 0.5;
 }
+/* --- Galería Interactiva Neo-Brutalista --- */
+.brutal-gallery {
+    cursor: crosshair; /* Un cursor técnico le da un toque muy industrial */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efecto físico de "hundimiento" al pasar el mouse */
+.brutal-gallery:hover {
+    transform: translate(4px, 4px);
+    box-shadow: 8px 8px 0px var(--border-heavy);
+}
+
+/* Posicionamiento de las dos imágenes */
+.brutal-gallery img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Estado inicial de la segunda foto (ligeramente ampliada y transparente) */
+.img-back {
+    opacity: 0;
+    transform: scale(1.1);
+}
+
+/* Al pasar el mouse: la foto 1 desaparece y la 2 se revela enfocándose */
+.brutal-gallery:hover .img-front {
+    opacity: 0;
+}
+
+.brutal-gallery:hover .img-back {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Animación de la etiqueta de texto inferior */
+.brutal-gallery .image-overlay {
+    transition: background-color 0.3s ease, padding 0.3s ease;
+    z-index: 10; /* Asegura que el texto siempre esté encima de las fotos */
+}
+
+.brutal-gallery:hover .image-overlay {
+    background-color: var(--accent); /* Cambia al color naranja/acento */
+    padding-bottom: 1.5rem; /* Crece un poco hacia arriba */
+    color: var(--surface);
+}
 
 .image-overlay {
     position: absolute;
@@ -577,6 +717,18 @@ header.scrolled .main-logo {
     color: var(--text-main);
     font-weight: 700;
     font-size: 0.85rem;
+}
+/* Control del logo SVG en el footer */
+.footer-logo {
+    height: 100px; /* Puedes subirlo a 70px o 80px si quieres que sea más imponente */
+    width: auto;
+    display: block;
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.02);
 }
 
 /* ==========================================================================
