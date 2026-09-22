@@ -597,9 +597,10 @@ header.scrolled .main-logo {
     opacity: 0.5;
 }
 /* --- Galería Interactiva Neo-Brutalista --- */
-.brutal-gallery {
-    cursor: crosshair; /* Un cursor técnico le da un toque muy industrial */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+.brutal-gallery,
+.service-image-placeholder,
+.gallery-item {
+    cursor: default; 
 }
 
 /* Efecto físico de "hundimiento" al pasar el mouse */
@@ -802,13 +803,19 @@ header.scrolled .main-logo {
     width: 20px;
     height: 20px;
 }
-
-/* Efecto al pasar el mouse: se pinta de naranja y se "hunde" como un botón físico */
+/* Efecto Tornasol original (tonos pastel) al pasar el mouse por las redes sociales */
 .social-icon:hover {
-    background: var(--neon-gradient);
+    background: linear-gradient(
+        110deg, 
+        #9DF2F8 0%, 
+        #D8A7F4 25%, 
+        #F7A8D8 50%, 
+        #F5F7A8 75%, 
+        #9DF2F8 100%
+    );
     background-size: 200% auto;
-    animation: resplandorTornasol 3s linear infinite;
-    color: var(--surface);
+    animation: resplandorTornasol 2s linear infinite;
+    color: var(--text-main); /* El ícono se mantiene oscuro para contrastar con el fondo claro */
     transform: translate(-2px, -2px);
     box-shadow: 5px 5px 0px var(--border-heavy);
     border-color: var(--border-heavy);
