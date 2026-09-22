@@ -660,6 +660,49 @@ header.scrolled .main-logo {
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+/* ==========================================================================
+   SECCIÓN DE GALERÍA Y MUESTRARIO
+   ========================================================================== */
+.gallery-section {
+    /* Usamos el fondo grisáceo base para que las fotos resalten más */
+    background-color: var(--bg-base); 
+    padding: 6rem 5%;
+    border-bottom: 3px solid var(--border-heavy);
+}
+
+.gallery-grid {
+    display: grid;
+    /* Esto hace que la cuadrícula sea responsiva automáticamente sin media queries extras */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    width: 100%;
+    height: 280px; /* Altura fija para que todas las fotos se vean del mismo tamaño */
+    background-color: var(--surface);
+    border: 3px solid var(--border-heavy);
+    box-shadow: 6px 6px 0px var(--border-heavy);
+    overflow: hidden; /* Evita que las fotos se salgan de la caja */
+}
+
+/* Ajuste específico para la etiqueta negra inferior dentro de la galería */
+.gallery-item .image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--border-heavy);
+    color: var(--surface);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    text-align: center;
+}
 
 /* ==========================================================================
    11. PIE DE PÁGINA (FOOTER)
