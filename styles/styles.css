@@ -761,6 +761,7 @@ header.scrolled .main-logo {
     font-weight: 700;
     font-size: 0.85rem;
 }
+
 /* Control del logo SVG en el footer */
 .footer-logo {
     height: 100px; /* Puedes subirlo a 70px o 80px si quieres que sea más imponente */
@@ -772,6 +773,45 @@ header.scrolled .main-logo {
 
 .footer-logo:hover {
     transform: scale(1.02);
+}
+
+/* ==========================================
+   REDES SOCIALES EN EL FOOTER
+   ========================================== */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: var(--surface);
+    color: var(--text-main);
+    border: 2px solid var(--border-heavy);
+    box-shadow: 3px 3px 0px var(--border-heavy);
+    border-radius: 0; /* Mantiene el estilo rudo / neo-brutalista */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.social-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Efecto al pasar el mouse: se pinta de naranja y se "hunde" como un botón físico */
+.social-icon:hover {
+    background: var(--neon-gradient);
+    background-size: 200% auto;
+    animation: resplandorTornasol 3s linear infinite;
+    color: var(--surface);
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--border-heavy);
+    border-color: var(--border-heavy);
 }
 
 /* ==========================================================================
